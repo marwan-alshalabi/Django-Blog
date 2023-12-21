@@ -5,6 +5,7 @@ blog :
     - image
     - author
     - tags 
+    - creation_date
 
 
 1 : app : posts
