@@ -24,7 +24,7 @@ ORM :
 
 class Post(models.Model):
     name = models.CharField(max_length=100)
-    content = models.TextField(max_length=10000)
+    content = models.TextField(max_length=50000)
     created_at = models.DateTimeField(default=timezone.now)
     image = models.ImageField(upload_to='post')
     tags = TaggableManager()
