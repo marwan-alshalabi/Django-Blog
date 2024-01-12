@@ -26,6 +26,7 @@ def add_post (request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            return redirect ('/blog/')
     else:    
         form = PostForm()
     return render(request,'new_post.html',{'form':form})

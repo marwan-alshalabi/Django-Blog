@@ -1,6 +1,8 @@
-<h3> <a href="/blog">Blog </a></h3>
 
-<h2> {{post}} </h2>   
+<h3> <a href="/blog">Blog </a></h3>
+<h2> {{post}} </h2>
+<a href="/blog/{{post.id}}/edit">Edit Post</a>
+<a href="/blog/{{post.id}}/delete">Delete Post</a>     
 
 <p>{{post.content|safe}}</p>
 
