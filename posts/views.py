@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from .models import Post
 from .forms import PostForm
 
@@ -10,13 +10,13 @@ from .forms import PostForm
         - tempate
 '''
 
-def post_list(request):
+def post_list (request):
     data = Post.objects.all() # model
     return render(request,'posts_list.html', {'posts':data})
 
 
 
-def post_detail(request,id):
+def post_detail (request,id):
     data = Post.objects.get(id=id)
     return render(request, 'post_detail.html', {'post':data})
 
@@ -41,3 +41,11 @@ def edit_post (request,id):
     else:    
         form = PostForm(instance=post)
     return render(request,'edit_post.html',{'form':form}) 
+
+
+
+def delete_post (request,id):
+    post = Post.objects.get(id=id)
+    post.delete()
+    return redirect ('/blog/')
+    
