@@ -7,7 +7,7 @@ from .forms import PostForm
     view : 
         - url
         - model
-        - tempate
+        - template
 '''
 
 def post_list (request):
@@ -21,15 +21,17 @@ def post_detail (request,id):
     return render(request, 'post_detail.html', {'post':data})
 
 
-def add_post (request):
-    if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)
+def add_post(request):
+    if request.method =='POST':
+        form = PostForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
-            return redirect ('/blog/')
+
+
     else:    
         form = PostForm()
-    return render(request,'new_post.html',{'form':form})
+
+    return render(request,'new_post.html',{'form': form})
 
 
 
