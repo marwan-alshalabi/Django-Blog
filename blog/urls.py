@@ -17,17 +17,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path , include
 from posts.views import post_list , post_detail , add_post , edit_post , delete_post
+
+
+from posts.views2 import PostList , PostDetail , PostCreate , PostEdit , PostDelete
+
 from django.conf import settings
 from django.conf.urls.static import static
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/' , post_list),
-    path('blog/new', add_post),
-    path('blog/<int:id>', post_detail),
-    path('blog/<int:id>/edit', edit_post),
-    path('blog/<int:id>/delete', delete_post),
+    path('blog/' , PostList.as_view()),
+    path('blog/new', PostCreate.as_view()),
+    path('blog/<int:pk>', PostDetail.as_view()),
+    path('blog/<int:pk>/edit', PostEdit.as_view()),
+    path('blog/<int:pk>/delete', PostDelete.as_view()),
 
     path('summernote/', include('django_summernote.urls')),
 ]
